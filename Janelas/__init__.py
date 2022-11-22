@@ -43,10 +43,9 @@ def pdv():  # PDV interface principal
                sg.Text("   Desconto       ", font="Verdana 12 bold", background_color="#252525"),
                sg.Text("      Total", font="Verdana 12 bold", background_color="#252525")],
               [sg.Text('Valor da compra: ', font="Verdana 9 bold", background_color="#3A3B3C"), sg.Text(f'{"0,00":>140}', key='tot', font="Verdana 9 bold", background_color="#3A3B3C")],
-              [sg.Button('Cadastrar produtos', key='add'), sg.Button('Cadastro de clientes', key='cc'),
-               sg.Exit('Sair', key='saida'), sg.Text('', font="Verdana 9 bold", background_color="#3A3B3C", size=(36, 0)), sg.Button('Fechar cupom', key='end')],
+              
               ]
-    return sg.Window('Caixa', layout=layout, finalize=True, size=(1200, 640))
+    return sg.Window('Caixa', layout=layout, finalize=True, size=(1200, 640), return_keyboard_events=True)
 
 
 def cadastro_clientes():
@@ -62,7 +61,7 @@ def cadastro_clientes():
                sg.Input(size=(20, 0))], [sg. Text('', size=(9, 0)), sg.Text('RG:'), sg.Input(size=(20, 0))],
               [sg.Button('Salvar', key='save'), sg.Exit('Sair', key='fim')]
               ]
-    return sg.Window('Cadastro de clientes', layout=layout, finalize=True, size=(800, 440))
+    return sg.Window('Cadastro de clientes', layout=layout, finalize=True, size=(800, 440), return_keyboard_events=True)
 
 
 def fecha(compra):  # Fecha Cupom
@@ -74,11 +73,11 @@ def fecha(compra):  # Fecha Cupom
     layout = [
         [sg.Text('Compra: R$', size=(10, 0)), sg.InputText(compra, size=(69, 0), key='compra')],
         [sg.Text('Pago: R$', size=(10, 0)), sg.InputText(size=(69, 0), key='pago')],
-        [sg.Button('Calcular'), sg.Exit('Sair', key='Sair')],
+        [sg.Button('Calcular', bind_return_key=True), sg.Exit('Sair', key='Sair')],
         [sg.Text("Troco: "), sg.Input(default_text="R$", key="troco", size=(10, 0))],
         [sg.Table(key="tb", headings=cedulas, values=quanti)]
     ]
-    return sg.Window('Fecha', layout=layout, finalize=True)
+    return sg.Window('Fecha', layout=layout, finalize=True, return_keyboard_events=True)
 
 
 def cadastro(cache=""):  # Cadastro de produtos
@@ -91,7 +90,7 @@ def cadastro(cache=""):  # Cadastro de produtos
               [sg.Button('Pronto', key='pronto'), sg.Exit('Fechar')],
 
               ]
-    return sg.Window('Cadastro', layout=layout, finalize=True, size=(800, 440))
+    return sg.Window('Cadastro', layout=layout, finalize=True, size=(800, 440), return_keyboard_events=True)
 
 
 def non():  # Produtos não encontrados
@@ -101,6 +100,6 @@ def non():  # Produtos não encontrados
     layout = [[sg.Text('Produto não encontrado')],
               [sg.Text('Quer cadastra-lo?')],
               [sg.Button('Cadastrar', key='add1'), sg.Exit('Sair', key='k')]]
-    return sg.Window('Erro...', layout=layout, size=(500, 200), finalize=True)
+    return sg.Window('Erro...', layout=layout, size=(500, 200), finalize=True, return_keyboard_events=True)
 
 

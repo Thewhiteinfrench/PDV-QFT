@@ -1,7 +1,7 @@
 from PDV_func import *
 from Janelas import *
 produtos_passados = {}
-events = ["cancelar", "saida", "fim", "Sair", "Fechar", "k", sg.WIN_CLOSED]
+events = ["cancelar", "Escape:27", "fim", "Sair", "Fechar", "k", sg.WIN_CLOSED]
 janelas = {0: login(), 1: None, 2: None,
            3: None, 4: None, 5: None}
 compras = []
@@ -36,11 +36,11 @@ while True:
         janelas[0].close()
 
     # INICIANDO CADASTRO DE CLIENTES
-    if event == "cc" and janelas[2] is None:
+    if event == "F2:113" and janelas[2] is None:
         janelas[2] = cadastro_clientes()
 
     # INICIANDO JANELA DE FECHAR COMPRA
-    if event == "end" and janelas[3] is None:
+    if event == "F3:114" and janelas[3] is None:
         janelas[3] = fecha(str(f'''{soma:.2f}''').replace('.', ','))
         soma = 0
         contador = 0
@@ -50,7 +50,7 @@ while True:
         janelas[1]["op"].update(values=compras)
 
     # INICIANDO CADASTRO DE PRODUTOS
-    if event == "add" and janelas[4] is None:
+    if event == "F4:115" and janelas[4] is None:
         janelas[4] = cadastro()
     if event == 'add1':
         janelas[5].close()
