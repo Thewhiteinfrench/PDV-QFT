@@ -24,29 +24,29 @@ def login():
 
 def pdv():  # PDV interface principal
     compras = []
-    head = ["Item", "  Descrição  ", "   Valor   ", "Quantidade", "Total"]
+    head = ["  Item  ", "  Descrição  ", "   Valor   ", " Quantidade ", "  Total  "]
     sg.theme("SystemDefault")
     SetOptions(background_color="#252525", scrollbar_color=rgb(255, 255, 255), text_color=rgb(255, 255, 255))
     layout = [[sg.Input(key='produto', size=(35, 0), background_color="#3A3B3C", expand_x=True, font="Verdana 25 bold",
-                        text_color="#FFFAFA")],
-              [sg.Text('Descrição:', text_color="#feb403", font="Verdana 12 bold", background_color="#252525",
-                       size=(12, 0)),
-              sg.Button('Adcionar', key='busca', button_color="#feb403", bind_return_key=True, size=(9, 0)),
+                        text_color=rgb(255, 255, 255))],
+              [sg.Text('Código:', text_color="#feb403", font="Verdana 15 bold", background_color="#252525",
+                       size=(12, 0))],
+              [sg.Button('Adcionar', key='busca', button_color="#feb403", size=(15, 0)),
               sg.Text('', key='vazio', size=(23, 0), background_color="#252525")],
               [sg.Table(size=(120, 20), key='op', values=compras, headings=head)],
-              [sg.Input(size=(8, 0), font="Verdana 15 bold", key="qua", default_text="1.000"),
-               sg.Text(size=(8, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="pu", text="0,00"),
-               sg.Text(size=(8, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="des", text="0,00"),
-               sg.Text(size=(8, 0),text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="tt", text="0,00")],
-              [sg.Text("   Quantidade   ", font="Verdana 10 bold", background_color="#252525"),
-               sg.Text("   Valor Unitário    ", font="Verdana 10 bold", background_color="#252525"),
-               sg.Text("   Desconto       ", font="Verdana 10 bold", background_color="#252525"),
-               sg.Text("       Total", font="Verdana 10 bold", background_color="#252525")],
+              [sg.Input(size=(10, 0), font="Verdana 15 bold", key="qua", default_text="1.000"),
+               sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="pu", text="0,00"),
+               sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="des", text="0,00"),
+               sg.Text(size=(10, 0),text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="tt", text="0,00")],
+              [sg.Text("    Quantidade    ", font="Verdana 12 bold", background_color="#252525"),
+               sg.Text("  Valor Unitário    ", font="Verdana 12 bold", background_color="#252525"),
+               sg.Text("   Desconto       ", font="Verdana 12 bold", background_color="#252525"),
+               sg.Text("      Total", font="Verdana 12 bold", background_color="#252525")],
               [sg.Text('Valor da compra: ', font="Verdana 9 bold", background_color="#3A3B3C"), sg.Text(f'{"0,00":>140}', key='tot', font="Verdana 9 bold", background_color="#3A3B3C")],
               [sg.Button('Cadastrar produtos', key='add'), sg.Button('Cadastro de clientes', key='cc'),
                sg.Exit('Sair', key='saida'), sg.Text('', font="Verdana 9 bold", background_color="#3A3B3C", size=(36, 0)), sg.Button('Fechar cupom', key='end')],
               ]
-    return sg.Window('Caixa', layout=layout, finalize=True, size=(1000, 640))
+    return sg.Window('Caixa', layout=layout, finalize=True, size=(1200, 640))
 
 
 def cadastro_clientes():
