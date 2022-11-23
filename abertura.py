@@ -1,5 +1,6 @@
 from PDV_func import *
 from Janelas import *
+
 produtos_passados = {}
 events = ["cancelar", "Escape:27", "fim", "Sair", "Fechar", "k", sg.WIN_CLOSED]
 janelas = {0: login(), 1: None, 2: None,
@@ -11,7 +12,7 @@ soma = 0
 cache = ""
 #  INICIANDO PROGRAMA
 while True:
-    #  LEITURA DE EVENTOS E JANELAS
+    # LEITURA DE EVENTOS E JANELAS
     window, event, values = sg.read_all_windows()
     # FiINALIZANDO JANELAS
     if event in events:
@@ -30,7 +31,7 @@ while True:
             janelas[5].close()
             janelas[5] = None
 
-# EVENTOS DE INICIALIZAÇÃO DE JANELAS
+    # EVENTOS DE INICIALIZAÇÃO DE JANELAS
     if event == "avancar":
         janelas[1] = pdv()
         janelas[0].close()
@@ -41,7 +42,7 @@ while True:
 
     # INICIANDO JANELA DE FECHAR COMPRA
     if event == "F3:114" and janelas[3] is None:
-        janelas[3] = fecha(str(f'''{soma:.2f}''').replace('.', ','))
+        janelas[3] = fecha(str(f'{soma:.2f}').replace('.', ','))
         soma = 0
         contador = 0
         tot = str(f'{soma:.2f}').replace('.', ',')
@@ -55,7 +56,7 @@ while True:
     if event == 'add1':
         janelas[5].close()
         janelas[4] = cadastro(cache)
-# EVENTOS DO PDV
+    # EVENTOS DO PDV
     # BUSCANDO PRODUTOS
     if event == "busca" and values["produto"].strip() != "":
         a = busca(values["produto"], produtos)
@@ -64,16 +65,17 @@ while True:
             contador_itens += 1
             # EVITANDO ERRO QUANTIDADE VAZIA
             if values["qua"].strip() == "":
-                values["qua"] = "1.000"
+                values["qua"] = "1,000"
+            values["qua"] = float(values["qua"].replace(",", "."))
             # DEFININDO SOMA À SER EXIBIDA
-            soma += float(a["Valor"]) * float(values["qua"].replace(",", "."))
+            soma += float(a["Valor"]) * values["qua"]
             # FORMATANDO VALOR (SOMA)
             tot = str(f'{soma:.2f}').replace('.', ',')
             # ATUALIZANDO JANELA PARA O VALOR FORMATADO
             janelas[1]['tot'].update(f'{tot:>140}')
             # DEFININDO VALRORES DA TABELA
             compras.append([contador_itens, a["Nome"], a["Valor"],
-                            values["qua"].replace(",", ".")])
+                            str(f"{values['qua']:.3f}").replace('.', ',')])
             # ATUALIZANDO TABELA
             janelas[1]["op"].update(values=compras)
         # PRODUTO NÃO ENCONTRADO
