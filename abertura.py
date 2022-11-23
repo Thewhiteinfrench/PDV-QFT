@@ -42,6 +42,7 @@ while True:
 
     # INICIANDO JANELA DE FECHAR COMPRA
     if event == "F3:114" and janelas[3] is None:
+        janelas[1]["qua"].update("1,000")
         janelas[3] = fecha(str(f'{soma:.2f}').replace('.', ','))
         soma = 0
         contador = 0
@@ -62,6 +63,7 @@ while True:
         a = busca(values["produto"], produtos)
         # PRODUTO ENCONTRADO
         if a:
+            janelas[1]["produto"].update(a["Nome"])
             contador_itens += 1
             # EVITANDO ERRO QUANTIDADE VAZIA
             if values["qua"].strip() == "":
@@ -74,10 +76,11 @@ while True:
             # ATUALIZANDO JANELA PARA O VALOR FORMATADO
             janelas[1]['tot'].update(f'{tot:>140}')
             # DEFININDO VALRORES DA TABELA
+            janelas[1]["produto"].update("")
             compras.append([contador_itens, a["Nome"], a["Valor"],
                             str(f"{values['qua']:.3f}").replace('.', ',')])
             # ATUALIZANDO TABELA
-            janelas[1]["op"].update(values=compras)
+            janelas[1]["op"].update(values=compras)            
         # PRODUTO NÃO ENCONTRADO
         else:
             # DEFININDO VARIÁVEL COM CÓDIGO NÃO CADASTRADO
