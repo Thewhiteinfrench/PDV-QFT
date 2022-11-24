@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a5cfc18-2e75-4a82-a9a2-c2285d8a22b3" name="Changes" comment="Iniciativa QFT --PDV--">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Janelas/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Janelas/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/abertura.py" beforeDir="false" afterPath="$PROJECT_DIR$/abertura.py" afterDir="false" />
-    </list>
+    <list default="true" id="8a5cfc18-2e75-4a82-a9a2-c2285d8a22b3" name="Changes" comment="Iniciativa QFT --PDV--" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
