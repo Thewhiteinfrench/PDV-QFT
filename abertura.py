@@ -22,8 +22,19 @@ while True:
             janelas[2].close()
             janelas[2] = None
         elif window == janelas[3]:
-            janelas[3].close()
-            janelas[3] = None
+            if values["troco"] == "R$":
+                validacao = sg.PopupYesNo("Quer mesmo cancelar a ação?\n"
+                                          "Todas as informações serão perdidas.",
+                                          font="Verdana 8 bold", button_color="#feb403",
+                                          background_color="#252525")
+                if validacao == "Yes":
+                    janelas[3].close()
+                    janelas[3] = None
+                else:
+                    pass
+            else:
+                janelas[3].close()
+                janelas[3] = None
         elif window == janelas[4]:
             janelas[4].close()
             janelas[4] = None
@@ -47,7 +58,7 @@ while True:
         soma = 0
         contador = 0
         tot = str(f'{soma:.2f}').replace('.', ',')
-        janelas[1]['tot'].update(f'{tot:>140}')
+        janelas[1]['tot'].update(f'{tot}')
         compras = []
         janelas[1]["op"].update(values=compras)
 
@@ -74,7 +85,7 @@ while True:
             # FORMATANDO VALOR (SOMA)
             tot = str(f'{soma:.2f}').replace('.', ',')
             # ATUALIZANDO JANELA PARA O VALOR FORMATADO
-            janelas[1]['tot'].update(f'{tot:>140}')
+            janelas[1]['tot'].update(f'{tot}')
             # DEFININDO VALRORES DA TABELA
             janelas[1]["produto"].update("")
             compras.append([contador_itens, a["Nome"], a["Valor"],

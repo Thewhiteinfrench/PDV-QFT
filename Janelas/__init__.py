@@ -1,7 +1,8 @@
 from PySimpleGUI import SetOptions, rgb
 import PySimpleGUI as sg
-
-
+from datetime import datetime
+op = ""
+data = f"{datetime.now().day}/{datetime.now().month}/{datetime.now().year}"
 def login():
     sg.theme("SystemDefault")
     SetOptions(background_color="#252525", text_color="#feb403", scrollbar_color=rgb(255, 255, 255),
@@ -41,9 +42,14 @@ def pdv():  # PDV interface principal
               [sg.Text("    Quantidade    ", font="Verdana 12 bold", background_color="#252525"),
                sg.Text("  Valor Unitário    ", font="Verdana 12 bold", background_color="#252525"),
                sg.Text("   Desconto       ", font="Verdana 12 bold", background_color="#252525"),
-               sg.Text("      Total", font="Verdana 12 bold", background_color="#252525")],
-              [sg.Text('Valor da compra: ', font="Verdana 9 bold", background_color="#3A3B3C"), sg.Text(f'{"0,00":>140}', key='tot', font="Verdana 9 bold", background_color="#3A3B3C")],
-              
+               sg.Text("  Preço Total", font="Verdana 12 bold", background_color="#252525"), sg.Push(background_color="#252525"),
+               sg.Text("Total:", font="Verdana 14 bold", background_color="#252525"),
+               sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA",
+                                         font="Verdana 15 bold", key="tot", text="0,00")],
+              [sg.Text("Caixa 001", font="Verdana 14 bold", background_color="#252525"), sg.Push(background_color="#252525"),
+               sg.Text("IP: 000.000.0.000", background_color="#252525")],
+              [sg.Text(f"Operador: {op}", background_color="#252525"), sg.Push(background_color="#252525"),
+               sg.Text(f"Data: {data}", background_color="#252525")]
               ]
     return sg.Window('Caixa', layout=layout, finalize=True, size=(1200, 640), return_keyboard_events=True)
 
