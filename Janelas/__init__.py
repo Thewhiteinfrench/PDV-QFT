@@ -27,18 +27,19 @@ def pdv():  # PDV interface principal
     compras = []
     head = ["  Item  ", "  Descrição  ", "   Valor   ", " Quantidade ", "  Total  "]
     sg.theme("SystemDefault")
-    SetOptions(background_color="#252525", scrollbar_color=rgb(255, 255, 255), text_color=rgb(255, 255, 255))
-    layout = [[sg.Input(key='produto', size=(35, 0), background_color="#3A3B3C", expand_x=True, font="Verdana 25 bold",
-                        text_color=rgb(255, 255, 255))],
+    SetOptions(background_color="#252525", scrollbar_color=rgb(255, 255, 255), text_color=rgb(255, 255, 255), )
+    layout = [[sg.Text("Descrição", size=(35, 0), key="descricao", background_color="#3A3B3C", expand_x=True, font="Verdana 25 bold",
+                       text_color=rgb(255, 255, 255), justification="center")],
               [sg.Text('Código:', text_color="#feb403", font="Verdana 15 bold", background_color="#252525",
-                       size=(12, 0))],
+                       size=(7, 0)), sg.Input(key='produto', size=(14, 0), background_color="#3A3B3C", font="Verdana 13 bold",
+                        text_color=rgb(255, 255, 255))],
               [sg.Button('Adcionar', key='busca', button_color="#feb403", size=(15, 0), bind_return_key=True),
               sg.Text('', key='vazio', size=(23, 0), background_color="#252525")],
-              [sg.Table(size=(120, 20), key='op', values=compras, headings=head)],
+              [sg.Table(size=(125, 27), key='op', values=compras, headings=head), sg.Image("logo0.png", size=(450, 450))],
               [sg.Input(size=(10, 0), font="Verdana 15 bold", key="qua", default_text="1,000"),
                sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="pu", text="0,00"),
                sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="des", text="0,00"),
-               sg.Text(size=(10, 0),text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="tt", text="0,00")],
+               sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="tt", text="0,00")],
               [sg.Text("    Quantidade    ", font="Verdana 12 bold", background_color="#252525"),
                sg.Text("  Valor Unitário    ", font="Verdana 12 bold", background_color="#252525"),
                sg.Text("   Desconto       ", font="Verdana 12 bold", background_color="#252525"),
@@ -51,7 +52,7 @@ def pdv():  # PDV interface principal
               [sg.Text(f"Operador: {op}", background_color="#252525"), sg.Push(background_color="#252525"),
                sg.Text(f"Data: {data}", background_color="#252525")]
               ]
-    return sg.Window('Caixa', layout=layout, finalize=True, size=(1200, 640), return_keyboard_events=True)
+    return sg.Window('Caixa', layout=layout, finalize=True, size=(1100, 714), return_keyboard_events=True)
 
 
 def cadastro_clientes():

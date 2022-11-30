@@ -54,6 +54,7 @@ while True:
     # INICIANDO JANELA DE FECHAR COMPRA
     if event == "F3:114" and janelas[3] is None:
         janelas[1]["qua"].update("1,000")
+        janelas[1]["descricao"].update("")
         janelas[3] = fecha(str(f'{soma:.2f}').replace('.', ','))
         soma = 0
         contador = 0
@@ -74,7 +75,7 @@ while True:
         a = busca(values["produto"], produtos)
         # PRODUTO ENCONTRADO
         if a:
-            janelas[1]["produto"].update(a["Nome"])
+            janelas[1]["descricao"].update(a["Nome"])
             contador_itens += 1
             # EVITANDO ERRO QUANTIDADE VAZIA
             if values["qua"].strip() == "":
@@ -88,8 +89,11 @@ while True:
             janelas[1]['tot'].update(f'{tot}')
             # DEFININDO VALRORES DA TABELA
             janelas[1]["produto"].update("")
-            compras.append([contador_itens, a["Nome"], a["Valor"],
-                            str(f"{values['qua']:.3f}").replace('.', ',')])
+            compras.append([contador_itens, a["Nome"], str(f"{float(a['Valor']):.2f}").replace('.', ','),
+                            str(f"{values['qua']:.3f}").replace('.', ','),
+                            str(f"{float(a['Valor']) * float(values['qua']):.2f}").replace('.', ',')])
+            janelas[1]["pu"].update(str(f"{float(a['Valor']):.2f}").replace('.', ','))
+            janelas[1]["tt"].update(str(f"{float(a['Valor']) * float(values['qua']):.2f}").replace('.', ','))
             # ATUALIZANDO TABELA
             janelas[1]["op"].update(values=compras)            
         # PRODUTO NÃO ENCONTRADO
