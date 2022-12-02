@@ -47,7 +47,7 @@ def troco(compra, pago):
                     break
     for c in acm:
         if c > 0:
-            quant[0].append(f"-----[{c}]")
+            quant[0].append(f"[{c}]")
         else:
-            quant[0].append(c)
+            quant[0].append("N/A")
     return quant

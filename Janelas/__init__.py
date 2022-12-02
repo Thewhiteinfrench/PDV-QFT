@@ -35,7 +35,7 @@ def pdv():  # PDV interface principal
                         text_color=rgb(255, 255, 255))],
               [sg.Button('Adcionar', key='busca', button_color="#feb403", size=(15, 0), bind_return_key=True),
               sg.Text('', key='vazio', size=(23, 0), background_color="#252525")],
-              [sg.Table(size=(125, 27), key='op', values=compras, headings=head), sg.Image("logo0.png", size=(450, 450))],
+              [sg.Table(size=(125, 27), key='op', values=compras, headings=head, justification="center"), sg.Image("logo0.png", size=(450, 450))],
               [sg.Input(size=(10, 0), font="Verdana 15 bold", key="qua", default_text="1,000"),
                sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="pu", text="0,00"),
                sg.Text(size=(10, 0), text_color=rgb(0, 0, 0), background_color="#FFFAFA", font="Verdana 15 bold", key="des", text="0,00"),
@@ -82,7 +82,7 @@ def fecha(compra):  # Fecha Cupom
         [sg.Text('Pago: R$', size=(10, 0)), sg.InputText(size=(69, 0), key='pago')],
         [sg.Button('Calcular', bind_return_key=True), sg.Exit('Sair', key='Sair')],
         [sg.Text("Troco: "), sg.Input(default_text="R$", key="troco", size=(10, 0))],
-        [sg.Table(key="tb", headings=cedulas, values=quanti)]
+        [sg.Table(key="tb", headings=cedulas, values=quanti, justification="center", size=(50, 2))]
     ]
     return sg.Window('Fecha', layout=layout, finalize=True, return_keyboard_events=True)
 

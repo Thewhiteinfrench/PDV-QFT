@@ -71,7 +71,7 @@ while True:
         janelas[4] = cadastro(cache)
     # EVENTOS DO PDV
     # BUSCANDO PRODUTOS
-    if event == "busca" and values["produto"].strip() != "":
+    if event == "busca" and len(values["produto"].strip()) > 2:
         a = busca(values["produto"], produtos)
         # PRODUTO ENCONTRADO
         if a:
@@ -95,13 +95,16 @@ while True:
             janelas[1]["pu"].update(str(f"{float(a['Valor']):.2f}").replace('.', ','))
             janelas[1]["tt"].update(str(f"{float(a['Valor']) * float(values['qua']):.2f}").replace('.', ','))
             # ATUALIZANDO TABELA
-            janelas[1]["op"].update(values=compras)            
+            janelas[1]["op"].update(values=compras)
         # PRODUTO NÃO ENCONTRADO
         else:
             # DEFININDO VARIÁVEL COM CÓDIGO NÃO CADASTRADO
             cache = values["produto"]
             # INICIANDO JANELA DE ERRO
             janelas[5] = non()
+    elif event == "busca" and len(values["produto"].strip()) > 0:
+        janelas[1]["qua"].update(values["produto"].strip())
+        janelas[1]["produto"].update("")
     # CADASTRANDO PRODUTOS !!!ALTERAR EM BREVE!!! DB EM XLSX
     if event == 'pronto' and values['nome'] != '' and values['cb'] != '' and values['valor'] != '':
         values['valor'] = values['valor'].replace(',', '.')
