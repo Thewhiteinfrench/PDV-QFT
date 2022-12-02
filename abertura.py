@@ -54,7 +54,9 @@ while True:
     # INICIANDO JANELA DE FECHAR COMPRA
     if event == "F3:114" and janelas[3] is None and len(compras) > 0:
         janelas[1]["qua"].update("1,000")
-        janelas[1]["descricao"].update("")
+        janelas[1]["pu"].update("0,00")
+        janelas[1]["tt"].update("0,00")
+        janelas[1]["descricao"].update("Descrição")
         janelas[3] = fecha(str(f'{soma:.2f}').replace('.', ','))
         soma = 0
         contador = 0
@@ -120,13 +122,15 @@ while True:
             print(f"{k, v}", end="")
     # FECHANDO A COMPRA
     quant = [[]]
-    if event == 'Calcular' and values['pago'] != '' and values['compra'] != '0,00':
+    if event == 'Calcular' and values['pago'].strip() != '':
         # FACILITADOR DE TROCO
         compra = float(f"{values['compra']}".replace(",", "."))
         pago = float(f"{values['pago']}".replace(",", "."))
         if pago < compra:
-            pass
-        janelas[3]["troco"].update(f"R${pago - compra:.2f}".replace(".", ","))
-        a = troco(compra, pago)
-        janelas[3]["tb"].update(values=a)
-        continue
+            janelas[3]["erro"].update("Valor inferior ao total!")
+        else:
+            janelas[3]["troco"].update(f"R${pago - compra:.2f}".replace(".", ","))
+            a = troco(compra, pago)
+            janelas[3]["tb"].update(values=a)
+            janelas[3]["erro"].update("")
+            continue

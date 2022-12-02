@@ -57,7 +57,7 @@ def pdv():  # PDV interface principal
 
 def cadastro_clientes():
     sg.theme("SystemDefault")
-    SetOptions(background_color="#252525", text_color="#feb403", scrollbar_color=rgb(255, 255, 255),
+    SetOptions(text_color="#feb403", scrollbar_color=rgb(255, 255, 255),
                input_text_color="#FFFAFA", input_elements_background_color="#3A3B3C")
     layout = [
         [sg.Text('Nome:'), sg.Input()],
@@ -75,13 +75,13 @@ def fecha(compra):  # Fecha Cupom
     quanti = []
     cedulas = ['R$100,00', 'R$50,00', 'R$20,00', 'R$10,00', 'R$5,00', 'R$2,00', 'R$1,00', 'R$0,50', 'R$0,25', 'R$0,10', 'R$0,05']
     sg.theme("SystemDefault")
-    SetOptions(background_color="#252525", text_color="#feb403", scrollbar_color=rgb(255, 255, 255),
+    SetOptions( text_color="#feb403", scrollbar_color=rgb(255, 255, 255),
                input_text_color="#FFFAFA", input_elements_background_color="#3A3B3C")
     layout = [
         [sg.Text('Compra: R$', size=(10, 0)), sg.InputText(compra, size=(69, 0), key='compra')],
         [sg.Text('Pago: R$', size=(10, 0)), sg.InputText(size=(69, 0), key='pago')],
         [sg.Button('Calcular', bind_return_key=True), sg.Exit('Sair', key='Sair')],
-        [sg.Text("Troco: "), sg.Input(default_text="R$", key="troco", size=(10, 0)), sg.Text("", background_color="#252525")],
+        [sg.Text("Troco: "), sg.Input(default_text="R$", key="troco", size=(10, 0)), sg.Text("", font="Verdana 8 bold", background_color="#252525", key="erro")],
         [sg.Table(key="tb", headings=cedulas, values=quanti, justification="center", size=(50, 2))]
     ]
     return sg.Window('Fecha', layout=layout, finalize=True, return_keyboard_events=True)

@@ -52,5 +52,5 @@ def troco(compra, pago):
         if c > 0:
             quant[0].append(f"[{c}]")
         else:
-            quant[0].append("N/A")
+            quant[0].append("")
     return quant
