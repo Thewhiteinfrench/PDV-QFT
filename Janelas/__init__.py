@@ -81,7 +81,7 @@ def fecha(compra):  # Fecha Cupom
         [sg.Text('Compra: R$', size=(10, 0)), sg.InputText(compra, size=(69, 0), key='compra')],
         [sg.Text('Pago: R$', size=(10, 0)), sg.InputText(size=(69, 0), key='pago')],
         [sg.Button('Calcular', bind_return_key=True), sg.Exit('Sair', key='Sair')],
-        [sg.Text("Troco: "), sg.Input(default_text="R$", key="troco", size=(10, 0))],
+        [sg.Text("Troco: "), sg.Input(default_text="R$", key="troco", size=(10, 0)), sg.Text("", background_color="#252525")],
         [sg.Table(key="tb", headings=cedulas, values=quanti, justification="center", size=(50, 2))]
     ]
     return sg.Window('Fecha', layout=layout, finalize=True, return_keyboard_events=True)

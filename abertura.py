@@ -52,7 +52,7 @@ while True:
         janelas[2] = cadastro_clientes()
 
     # INICIANDO JANELA DE FECHAR COMPRA
-    if event == "F3:114" and janelas[3] is None:
+    if event == "F3:114" and janelas[3] is None and len(compras) > 0:
         janelas[1]["qua"].update("1,000")
         janelas[1]["descricao"].update("")
         janelas[3] = fecha(str(f'{soma:.2f}').replace('.', ','))
@@ -124,6 +124,8 @@ while True:
         # FACILITADOR DE TROCO
         compra = float(f"{values['compra']}".replace(",", "."))
         pago = float(f"{values['pago']}".replace(",", "."))
+        if pago < compra:
+            pass
         janelas[3]["troco"].update(f"R${pago - compra:.2f}".replace(".", ","))
         a = troco(compra, pago)
         janelas[3]["tb"].update(values=a)

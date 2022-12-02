@@ -6,6 +6,9 @@ def busca(cb, produtos):
         if cb == c["Cb"]:
             return c
 
+def cad():
+    pass
+
 
 def troco(compra, pago):
     quant = [[]]
