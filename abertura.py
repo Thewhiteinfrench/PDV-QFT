@@ -61,6 +61,7 @@ while True:
         janelas[3] = fecha(str(f'{soma:.2f}').replace('.', ','))
         soma = 0
         contador = 0
+        contador_itens = 0
         tot = str(f'{soma:.2f}').replace('.', ',')
         janelas[1]['tot'].update(f'{tot}')
         compras = []
