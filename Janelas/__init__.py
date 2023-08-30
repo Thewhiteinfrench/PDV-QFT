@@ -17,6 +17,7 @@ def login():
                                                               bind_return_key=True, size=(9, 0)),
                sg.Exit("Cancelar", key="cancelar", button_color="#252525", size=(9, 0)),
                sg.Push(background_color="#252525")],
+              [sg.Text("", key="vf", font="Verdana 9 bold", background_color="#252525", size=(18, 0))]
               ]
     layout1 = [[sg.Image("logo1.png", size=(200, 125))]]
     layout2 = [
@@ -52,6 +53,10 @@ def pdv():  # PDV interface principal
               [sg.Text("Caixa 001", font="Verdana 14 bold", background_color="#252525"), sg.Push(background_color="#252525"),
                sg.Text("IP: 000.000.0.000", background_color="#252525")],
               [sg.Text(f"Operador: {op}", background_color="#252525"), sg.Push(background_color="#252525"),
+               sg.Text("F2: Cad. Cliente", font="Verdana 9 bold", background_color="#252525"),
+               sg.Text("F3: Fechar Compra", font="Verdana 9 bold", background_color="#252525"),
+               sg.Text("F4: Cad. Telas", font="Verdana 9 bold", background_color="#252525"),
+               sg.Push(background_color="#252525"),
                sg.Text(f"Data: {data}", background_color="#252525")]
               ]
     return sg.Window('Caixa', layout=layout, finalize=True, size=(1100, 714), return_keyboard_events=True)
@@ -94,9 +99,8 @@ def fecha(compra):  # Fecha Cupom
                        background_color="#252525", size=(10, 0)),
                sg.Input(default_text="0,00", font="Verdana 15 bold", size=(12, 0), background_color="#ffffff",
                         text_color=rgb(0, 0, 0), key="troco")],
-              [sg.Button('Calcular', bind_return_key=True), sg.Exit('Sair', key='Sair')],
-              [sg.Table(key="tb", headings=cedulas, values=quanti, justification="center", size=(50, 2))]
-    ]
+              [sg.Button('Calcular', bind_return_key=True)],
+              [sg.Table(key="tb", headings=cedulas, values=quanti, justification="center", size=(50, 2))]]
     return sg.Window('Fecha', layout=layout, finalize=True, return_keyboard_events=True)
 
 
@@ -104,13 +108,19 @@ def cadastro(cache=""):  # Cadastro de produtos
     sg.theme("SystemDefault")
     SetOptions(background_color="#252525", text_color="#feb403", scrollbar_color=rgb(255, 255, 255),
                input_text_color="#FFFAFA", input_elements_background_color="#3A3B3C")
-    layout = [[sg.Text('Nome:', size=(10, 0)), sg.Input(size=(15, 0), key='nome')],
-              [sg.Text('Valor: R$', size=(10, 0)), sg.Input(size=(15, 0), key='valor')],
-              [sg.Text('Código de barras:', size=(10, 0)), sg.Input(default_text=cache, size=(15, 0), key='cb')],
-              [sg.Button('Pronto', key='pronto'), sg.Exit('Fechar')],
+    layout = [[sg.Text('Modelo:', size=(11, 0), font="Verdana 12 bold", background_color="#252525"),
+               sg.Input(key='nome', font="Verdana 11 bold", size=(13, 0))],
+              [sg.Text('Valor:', size=(11, 0), font="Verdana 12 bold", background_color="#252525"),
+               sg.Input(font="Verdana 11 bold", key='valor', size=(13, 0))],
+              [sg.Text('Quantidade:', size=(11, 0), font="Verdana 12 bold", background_color="#252525"),
+               sg.Input(default_text=cache, font="Verdana 11 bold", key='qtd', size=(13, 0))],
+              [sg.Text('Código:', size=(11, 0), font="Verdana 12 bold", background_color="#252525"),
+               sg.Input(default_text=cache, font="Verdana 11 bold", key='cb', size=(13, 0))],
+              [sg.Button('Pronto', key='pronto', button_color="#feb403", size=(16, 0), bind_return_key=True),
+               sg.Exit('Fechar', button_color="#252525", size=(16, 0))],
 
               ]
-    return sg.Window('Cadastro', layout=layout, finalize=True, size=(800, 440), return_keyboard_events=True)
+    return sg.Window('Cadastro', layout=layout, finalize=True, size=(315, 315), return_keyboard_events=True)
 
 
 def non():  # Produtos não encontrados
