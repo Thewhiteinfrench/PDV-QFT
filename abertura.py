@@ -74,16 +74,14 @@ while True:
             compras = []
             janelas[1]["op"].update(values=compras)
 
-<<<<<<< Updated upstream
         # INICIANDO CADASTRO DE PRODUTOS
         if event == "F4:115" and janelas[4] is None:
             janelas[4] = cadastro()
-=======
-<<<<<<< HEAD
+
         # INICIANDO CADASTRO DE PRODUTOS
         if event == "F4:115" and janelas[4] is None:
             janelas[4] = cadastro()
-=======
+
     # INICIANDO JANELA DE FECHAR COMPRA
     if event == "F3:114" and janelas[3] is None and len(compras) > 0:
         janelas[1]["qua"].update("1,000")
@@ -102,8 +100,7 @@ while True:
     # INICIANDO CADASTRO DE PRODUTOS
     if event == "F4:115" and janelas[4] is None:
         janelas[4] = cadastro()
->>>>>>> cc437e0ddf62ca040c26a1d482aafefffeee519c
->>>>>>> Stashed changes
+
     if event == 'add1':
         janelas[5].close()
         janelas[4] = cadastro(cache)
